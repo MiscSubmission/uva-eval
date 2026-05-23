@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Project page for UVA-Eval: Pre-Trained Unified Video Action Models are Faithful Policy Evaluators."
+    >
+    <title>UVA-Eval | Project Page</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-hero">
+      <nav class="top-nav" aria-label="Page sections">
+        <a href="#abstract">Abstract</a>
+        <a href="#method">Method</a>
+        <a href="#results">Results</a>
+      </nav>
+
+      <div class="container hero-content">
+        <p class="eyebrow">CoRL Submission 2026</p>
+        <h1>UVA-Eval: Pre-Trained Unified Video Action Models are Faithful Policy Evaluators</h1>
+        <p class="subtitle">
+          A concise one-sentence summary of the paper contribution goes here.
+        </p>
+
+        <div class="authors" aria-label="Anonymous authors">
+          <span>Anonymous Authors</span>
+        </div>
+        <p class="affiliation">Affiliations withheld for anonymous review</p>
+
+        <div class="button-row" aria-label="Project links">
+          <a class="button primary" href="assets/appendix.pdf">Appendix</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="container teaser-section" aria-labelledby="teaser-title">
+        <div class="figure-placeholder large" role="img" aria-label="Main teaser figure placeholder">
+          <span>Main teaser figure or video</span>
+        </div>
+        <h2 id="teaser-title">One-Line Result Highlight</h2>
+        <p>
+          Replace this paragraph with a caption describing the central result,
+          dataset, or visual summary of the method.
+        </p>
+      </section>
+
+      <section class="container section" id="abstract" aria-labelledby="abstract-title">
+        <h2 id="abstract-title">Abstract</h2>
+        <p>
+          Evaluating generalist robot manipulation policies in the real world is
+          expensive, slow, and difficult to scale. Action-conditioned video world
+          models offer a scalable alternative by simulating policy rollouts in
+          imagination, but adapting them to real-world manipulation is hard:
+          autoregressive rollouts accumulate drift, multi-camera observations
+          must stay mutually consistent, and the evaluator must generalize to
+          policies unlike its training data. We show that a <em>pre-trained
+          Unified Video Action (UVA) model</em> is a faithful policy evaluator.
+          Because UVA jointly models forward dynamics (predicting frames from
+          actions) and inverse dynamics (predicting actions from frames), it
+          anchors generated rollouts to a physically plausible action manifold,
+          mitigating the drift a forward-only model cannot penalize. We adapt a
+          pre-trained UVA model into an evaluator with a fine-tuning recipe that
+          jointly trains multi-view forward dynamics, a cross-view reference
+          mode, and inverse dynamics, and we repurpose its inverse-dynamics head
+          as a per-chunk uncertainty signal that terminates unreliable rollouts
+          at no extra cost and supplies context for automatic vision-language-
+          model annotation. Built on the pre-trained video foundation model, our
+          evaluator attains a closed-loop Pearson correlation of 0.929 and MMRV
+          of 0.119 across 7 real-world VLAs, outperforming all video-model-based
+          baselines. It generalizes to a task-semantic shift absent from its
+          fine-tuning data and, beyond matching aggregate success rates,
+          reproduces the specific failure modes that policies exhibit in
+          real-world rollouts, enabling diagnostic use rather than ranking alone.
+        </p>
+      </section>
+
+      <section class="container section" id="method" aria-labelledby="method-title">
+        <h2 id="method-title">Method Overview</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Problem</h3>
+            <p>
+              Briefly describe the challenge your paper addresses and why it is
+              important.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Approach</h3>
+            <p>
+              Explain the central idea behind your method in a few sentences.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Contributions</h3>
+            <p>
+              List the main contributions, such as a new model, benchmark,
+              dataset, analysis, or application.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section" id="results" aria-labelledby="policy-evaluation-title">
+        <h2 id="policy-evaluation-title">Policy Evaluation Results</h2>
+        <p>
+          Compare UVA-Eval against real-world policy success rates and
+          video-model-based baselines.
+        </p>
+        <figure>
+          <div class="figure-placeholder section-figure">
+            <span>Policy evaluation results figure</span>
+          </div>
+          <figcaption>
+            Add correlation, success-rate ranking, or baseline comparison plots.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="container section" id="ablation-study" aria-labelledby="ablation-study-title">
+        <h2 id="ablation-study-title">Ablation Study</h2>
+        <p>
+          Show how multi-view forward dynamics, cross-view reference mode, and
+          inverse dynamics contribute to evaluator fidelity.
+        </p>
+        <figure>
+          <div class="figure-placeholder section-figure">
+            <span>Ablation study figure</span>
+          </div>
+          <figcaption>
+            Add component ablations, training objective comparisons, or rollout
+            quality measurements.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="container section" id="uncertainty-estimation" aria-labelledby="uncertainty-estimation-title">
+        <h2 id="uncertainty-estimation-title">Uncertainty Estimation</h2>
+        <p>
+          Visualize inverse-dynamics uncertainty as a signal for terminating
+          unreliable imagined rollouts.
+        </p>
+        <figure>
+          <div class="figure-placeholder section-figure">
+            <span>Uncertainty estimation figure</span>
+          </div>
+          <figcaption>
+            Add uncertainty traces, rollout termination examples, or reliability
+            analysis.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="container section" id="failure-mode-recovery" aria-labelledby="failure-mode-recovery-title">
+        <h2 id="failure-mode-recovery-title">Failure Mode Recovery</h2>
+        <p>
+          Show how UVA-Eval reproduces policy failure modes and supports
+          diagnostic analysis beyond aggregate success-rate ranking.
+        </p>
+        <figure>
+          <div class="figure-placeholder section-figure">
+            <span>Failure mode recovery figure</span>
+          </div>
+          <figcaption>
+            Add examples of imagined rollouts, recovered failure categories, or
+            comparisons with real-world failure cases.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="container section" aria-labelledby="resources-title">
+        <h2 id="resources-title">Resources</h2>
+        <div class="resource-list">
+          <a href="assets/appendix.pdf">
+            <strong>Appendix</strong>
+            <span>Add appendices, proofs, or extra results to assets/appendix.pdf.</span>
+          </a>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          Anonymous submission &middot; Last updated May 2026
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
