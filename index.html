@@ -20,15 +20,13 @@
 
       <div class="container hero-content">
         <p class="eyebrow">CoRL Submission 2026</p>
-        <h1>UVA-Eval: Pre-Trained Unified Video Action Models are Faithful Policy Evaluators</h1>
+        <h1>
+          <span class="title-prefix">UVA-Eval</span>
+          <span class="title-main">Pre-Trained Unified Video Action Models are Faithful Policy Evaluators</span>
+        </h1>
         <p class="subtitle">
           A concise one-sentence summary of the paper contribution goes here.
         </p>
-
-        <div class="authors" aria-label="Anonymous authors">
-          <span>Anonymous Authors</span>
-        </div>
-        <p class="affiliation">Affiliations withheld for anonymous review</p>
 
         <div class="button-row" aria-label="Project links">
           <a class="button primary" href="assets/appendix.pdf">Appendix</a>
@@ -118,6 +116,73 @@
             Add correlation, success-rate ranking, or baseline comparison plots.
           </figcaption>
         </figure>
+        <div class="rollout-legend" aria-label="Rollout type legend">
+          <span><i class="legend-swatch real-world"></i>Real-world rollout</span>
+          <span><i class="legend-swatch offline-model"></i>Offline world model rollout</span>
+          <span><i class="legend-swatch online-model"></i>Online world model rollout</span>
+        </div>
+        <div class="rollout-groups" aria-label="Policy evaluation rollout videos">
+          <div class="rollout-group">
+            <h3>Pick up yellow cup and put it in bin</h3>
+            <div class="video-grid">
+              <figure class="video-card">
+                <video controls preload="metadata">
+                  <source src="assets/rollouts_split/2026-04-01-211250Z-ur5e_single_4-c4e174b2581c__eval_17725__apr8_episode_buckets_120000__pick_up_yellow_cup_and_put_it_in_bin_roll1.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <figure class="video-card">
+                <video controls preload="metadata">
+                  <source src="assets/rollouts_split/2026-04-01-211250Z-ur5e_single_4-c4e174b2581c__eval_17725__apr8_episode_buckets_120000__pick_up_yellow_cup_and_put_it_in_bin_roll2.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <figure class="video-card">
+                <video controls preload="metadata">
+                  <source src="assets/rollouts_split/2026-04-01-211250Z-ur5e_single_4-c4e174b2581c__eval_17725__apr8_episode_buckets_120000__pick_up_yellow_cup_and_put_it_in_bin_roll3.mp4" type="video/mp4">
+                </video>
+              </figure>
+            </div>
+          </div>
+          <div class="rollout-group">
+            <h3>Pick up chopstick and put it in the blue trash can</h3>
+            <div class="video-grid">
+              <figure class="video-card">
+                <video controls preload="metadata">
+                  <source src="assets/rollouts_split/2026-04-01-123143Z-ur5e_single_4-2c1245aff162__eval_17724__apr8_v10_span_buckets_oct14_pretrain_12_22_80000__pick_up_chopstick_and_put_chopstick_in_the_blue_trash_can_roll1.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <figure class="video-card">
+                <video controls preload="metadata">
+                  <source src="assets/rollouts_split/2026-04-01-123143Z-ur5e_single_4-2c1245aff162__eval_17724__apr8_v10_span_buckets_oct14_pretrain_12_22_80000__pick_up_chopstick_and_put_chopstick_in_the_blue_trash_can_roll2.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <figure class="video-card">
+                <video controls preload="metadata">
+                  <source src="assets/rollouts_split/2026-04-01-123143Z-ur5e_single_4-2c1245aff162__eval_17724__apr8_v10_span_buckets_oct14_pretrain_12_22_80000__pick_up_chopstick_and_put_chopstick_in_the_blue_trash_can_roll3.mp4" type="video/mp4">
+                </video>
+              </figure>
+            </div>
+          </div>
+          <div class="rollout-group">
+            <h3>Pick up foil tray and throw it away</h3>
+            <div class="video-grid">
+              <figure class="video-card">
+                <video controls preload="metadata">
+                  <source src="assets/rollouts_split/2026-04-02-162712Z-ur5e_single_4-cbbb7d7452cd__eval_17725__apr8_full_large_run_5_100000_rtb__pick_up_foil_tray_and_throw_it_away_roll1.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <figure class="video-card">
+                <video controls preload="metadata">
+                  <source src="assets/rollouts_split/2026-04-02-162712Z-ur5e_single_4-cbbb7d7452cd__eval_17725__apr8_full_large_run_5_100000_rtb__pick_up_foil_tray_and_throw_it_away_roll2.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <figure class="video-card">
+                <video controls preload="metadata">
+                  <source src="assets/rollouts_split/2026-04-02-162712Z-ur5e_single_4-cbbb7d7452cd__eval_17725__apr8_full_large_run_5_100000_rtb__pick_up_foil_tray_and_throw_it_away_roll3.mp4" type="video/mp4">
+                </video>
+              </figure>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="container section" id="ablation-study" aria-labelledby="ablation-study-title">
@@ -126,15 +191,42 @@
           Show how multi-view forward dynamics, cross-view reference mode, and
           inverse dynamics contribute to evaluator fidelity.
         </p>
-        <figure>
-          <div class="figure-placeholder section-figure">
-            <span>Ablation study figure</span>
-          </div>
-          <figcaption>
-            Add component ablations, training objective comparisons, or rollout
-            quality measurements.
-          </figcaption>
-        </figure>
+        <div class="subsection-grid">
+          <article class="subsection-card">
+            <h3>Cross-view Reference Mode</h3>
+            <p>
+              Evaluate how cross-view conditioning improves multi-camera
+              consistency and rollout fidelity.
+            </p>
+            <figure>
+              <div class="figure-placeholder compact-figure">
+                <span>Cross-view reference ablation</span>
+              </div>
+              <figcaption>
+                Add comparison plots or qualitative examples with and without
+                cross-view reference mode.
+              </figcaption>
+            </figure>
+          </article>
+          <article class="subsection-card">
+            <h3>Inverse Dynamics</h3>
+            <p>
+              We compare the offline world model rollouts with and without inverse dynamics (ID) joint training.  We find that the ID joint training prevent the rollouts from drifting away from the ground-truth rollout.
+            </p>
+            <div class="ablation-video-card">
+              <figure>
+                <video controls preload="metadata">
+                  <source src="assets/ablation_id/inverse_dynamics_ablation_horizontal.mp4" type="video/mp4">
+                </video>
+                <figcaption class="split-caption">
+                  <span>GT</span>
+                  <span>w/o ID joint training</span>
+                  <span>w/ ID joint training</span>
+                </figcaption>
+              </figure>
+            </div>
+          </article>
+        </div>
       </section>
 
       <section class="container section" id="uncertainty-estimation" aria-labelledby="uncertainty-estimation-title">
