@@ -14,7 +14,6 @@
     <header class="site-hero">
       <nav class="top-nav" aria-label="Page sections">
         <a href="#abstract">Abstract</a>
-        <a href="#method">Method</a>
         <a href="#results">Results</a>
       </nav>
 
@@ -36,14 +35,24 @@
 
     <main>
       <section class="container teaser-section" aria-labelledby="teaser-title">
-        <div class="figure-placeholder large" role="img" aria-label="Main teaser figure placeholder">
-          <span>Main teaser figure or video</span>
-        </div>
-        <h2 id="teaser-title">One-Line Result Highlight</h2>
+        <h2 id="teaser-title">Unified Video Action Models as Policy Evaluators</h2>
         <p>
-          Replace this paragraph with a caption describing the central result,
-          dataset, or visual summary of the method.
+          A pre-trained Unified Video Action model can simulate closed-loop
+          policy behavior and estimate evaluator confidence from its own
+          inverse-dynamics signal.
         </p>
+        <figure class="teaser-figure">
+          <img
+            class="teaser-image"
+            src="assets/pipeline_v0.png"
+            alt="UVA-Eval pipeline from policy inputs through the Unified Video Action model to imagined rollouts and evaluation signals"
+          >
+          <figcaption>
+            UVA-Eval turns policy action chunks and multi-view observations into
+            closed-loop imagined rollouts, then uses inverse-dynamics uncertainty
+            to produce reliable evaluation signals.
+          </figcaption>
+        </figure>
       </section>
 
       <section class="container section" id="abstract" aria-labelledby="abstract-title">
@@ -76,7 +85,7 @@
         </p>
       </section>
 
-      <section class="container section" id="method" aria-labelledby="method-title">
+      <section class="container section" id="method" aria-labelledby="method-title" hidden>
         <h2 id="method-title">Method Overview</h2>
         <div class="card-grid">
           <article class="card">
