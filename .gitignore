@@ -1,0 +1,12 @@
+.tools/
+.tmp_paper_figure_deps/
+**/.DS_Store
+assets/rollouts_split_frames/
+assets/results/
+assets/ablation/
+assets/ablation_cvr/cvr_ablation_figure.*
+assets/ablation_id/inverse_dynamics_ablation_figure.*
+assets/uncertainty/uncertainty_paper_figure.*
+make_uncertainty_figure.py
+scripts/
+.DS_Store
