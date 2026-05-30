@@ -2,6 +2,7 @@
 .tmp_paper_figure_deps/
 **/.DS_Store
 assets/rollouts_split_frames/
+assets/ablation_id_frames/
 assets/results/
 assets/ablation/
 assets/ablation_cvr/cvr_ablation_figure.*

@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta
       name="description"
-      content="Project page for UVA-Eval: Pre-Trained Unified Video Action Models are Faithful Policy Evaluators."
+      content="Project page for SC3-Eval: Evaluating Robot Foundation Models via Self-Consistent Video Generation."
     >
-    <title>UVA-Eval | Project Page</title>
+    <title>SC3-Eval | Project Page</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -15,42 +15,44 @@
       <nav class="top-nav" aria-label="Page sections">
         <a href="#abstract">Abstract</a>
         <a href="#results">Results</a>
+        <a href="#ablation-study">Ablations</a>
       </nav>
 
       <div class="container hero-content">
         <p class="eyebrow">CoRL Submission 2026</p>
         <h1>
-          <span class="title-prefix">UVA-Eval</span>
-          <span class="title-main">Pre-Trained Unified Video Action Models are Faithful Policy Evaluators</span>
+          <span class="title-prefix">SC3-Eval</span>
+          <span class="title-main">Evaluating Robot Foundation Models via Self-Consistent Video Generation</span>
         </h1>
         <p class="subtitle">
-          A concise one-sentence summary of the paper contribution goes here.
+          A self-consistent video generation recipe that adapts pre-trained robot video foundation models into faithful closed-loop policy evaluators.
         </p>
 
         <div class="button-row" aria-label="Project links">
-          <a class="button primary" href="assets/appendix.pdf">Appendix</a>
+          <a class="button primary" href="assets/Cosmos%20PI%20Policy%20Evaluation%20%282%29.pdf">Paper</a>
         </div>
       </div>
     </header>
 
     <main>
       <section class="container teaser-section" aria-labelledby="teaser-title">
-        <h2 id="teaser-title">Unified Video Action Models as Policy Evaluators</h2>
+        <h2 id="teaser-title">Self-Consistent Video Generation</h2>
         <p>
-          A pre-trained Unified Video Action model can simulate closed-loop
-          policy behavior and estimate evaluator confidence from its own
-          inverse-dynamics signal.
+          SC3-Eval enforces forward-inverse dynamics consistency, multi-view
+          consistency, and test-time consistency to keep imagined policy rollouts
+          faithful over long horizons.
         </p>
         <figure class="teaser-figure">
           <img
             class="teaser-image"
-            src="assets/pipeline_v0.png"
-            alt="UVA-Eval pipeline from policy inputs through the Unified Video Action model to imagined rollouts and evaluation signals"
+            src="assets/teaser_v4.png"
+            alt="SC3-Eval consistency axes for forward-inverse dynamics, multi-view prediction, and test-time rollout termination"
           >
           <figcaption>
-            UVA-Eval turns policy action chunks and multi-view observations into
-            closed-loop imagined rollouts, then uses inverse-dynamics uncertainty
-            to produce reliable evaluation signals.
+            The three consistency axes of SC3-Eval: forward-inverse dynamics
+            consistency reduces rollout drift, multi-view consistency keeps
+            camera views coherent, and test-time consistency terminates
+            off-manifold generations.
           </figcaption>
         </figure>
       </section>
@@ -59,73 +61,72 @@
         <h2 id="abstract-title">Abstract</h2>
         <p>
           Evaluating generalist robot manipulation policies in the real world is
-          expensive, slow, and difficult to scale. Action-conditioned video world
-          models offer a scalable alternative by simulating policy rollouts in
-          imagination, but adapting them to real-world manipulation is hard:
-          autoregressive rollouts accumulate drift, multi-camera observations
-          must stay mutually consistent, and the evaluator must generalize to
-          policies unlike its training data. We show that a <em>pre-trained
-          Unified Video Action (UVA) model</em> is a faithful policy evaluator.
-          Because UVA jointly models forward dynamics (predicting frames from
-          actions) and inverse dynamics (predicting actions from frames), it
-          anchors generated rollouts to a physically plausible action manifold,
-          mitigating the drift a forward-only model cannot penalize. We adapt a
-          pre-trained UVA model into an evaluator with a fine-tuning recipe that
-          jointly trains multi-view forward dynamics, a cross-view reference
-          mode, and inverse dynamics, and we repurpose its inverse-dynamics head
-          as a per-chunk uncertainty signal that terminates unreliable rollouts
-          at no extra cost and supplies context for automatic vision-language-
-          model annotation. Built on the pre-trained video foundation model, our
-          evaluator attains a closed-loop Pearson correlation of 0.929 and MMRV
-          of 0.119 across 7 real-world VLAs, outperforming all video-model-based
-          baselines. It generalizes to a task-semantic shift absent from its
-          fine-tuning data and, beyond matching aggregate success rates,
-          reproduces the specific failure modes that policies exhibit in
-          real-world rollouts, enabling diagnostic use rather than ranking alone.
+          expensive, slow, and difficult to scale. Action-conditioned video
+          world models offer a scalable alternative by simulating policy
+          rollouts. Autoregressive rollouts accumulate compounding errors,
+          observations across multiple camera views must remain mutually
+          consistent, and the evaluator must generalize to policies whose
+          behaviors lie outside the training distribution. We address these
+          challenges with SC3-Eval, a self-consistent video generation recipe
+          that adapts a pre-trained video foundation model into an accurate
+          policy evaluator by enforcing three complementary forms of
+          consistency: forward-inverse dynamics consistency, cross-view
+          consistency, and test-time consistency. Across seven real-world
+          vision-language-action policies, SC3-Eval attains a closed-loop
+          Pearson correlation of 0.929 and MMRV of 0.119, outperforming prior
+          video-model-based baselines and generalizing to new tasks.
         </p>
-      </section>
-
-      <section class="container section" id="method" aria-labelledby="method-title" hidden>
-        <h2 id="method-title">Method Overview</h2>
-        <div class="card-grid">
-          <article class="card">
-            <h3>Problem</h3>
-            <p>
-              Briefly describe the challenge your paper addresses and why it is
-              important.
-            </p>
-          </article>
-          <article class="card">
-            <h3>Approach</h3>
-            <p>
-              Explain the central idea behind your method in a few sentences.
-            </p>
-          </article>
-          <article class="card">
-            <h3>Contributions</h3>
-            <p>
-              List the main contributions, such as a new model, benchmark,
-              dataset, analysis, or application.
-            </p>
-          </article>
-        </div>
       </section>
 
       <section class="container section" id="results" aria-labelledby="policy-evaluation-title">
         <h2 id="policy-evaluation-title">Policy Evaluation Results</h2>
         <p>
-          Compare UVA-Eval against real-world policy success rates and
-          video-model-based baselines.
+          SC3-Eval tracks real-world policy success rates across
+          in-distribution and out-of-distribution table bussing tasks, including
+          fine-grained success criteria.
+        </p>
+        <h3>Evaluation Setup</h3>
+        <p>
+          We evaluate table bussing with synchronized external and wrist camera
+          views, and score each trajectory using three criteria: language
+          following, object lifting, and object placing.
         </p>
         <figure>
           <img
             class="section-image"
-            src="assets/exp_corr.png"
+            src="assets/exp_setup_v3.png"
+            alt="Real-world table bussing setup with forward and reverse task arrows, three camera views, and three success criteria"
+          >
+          <figcaption>
+            (a) Real-world experiment setup and table bussing task variants.
+            (b) Three synchronized camera views observed by the policy and
+            world model. (c) Example frames for the three success criteria:
+            language following, object lifting, and object placing.
+          </figcaption>
+        </figure>
+        <hr></hr>
+        <h3>Correlation With Real-World Performance</h3>
+        <p>
+          The correlation plots compare predicted success rates against
+          real-world success rates. The left two panels evaluate offline
+          open-loop rollouts, where the world model is conditioned on the
+          real-world action sequence. The right two panels evaluate online
+          closed-loop rollouts, where the policy acts on generated frames. Each
+          mode is split into the in-distribution table bussing task and an
+          out-of-distribution reverse table bussing task, which keeps the same
+          scene and motion primitives but swaps object destinations.
+        </p>
+        <figure>
+          <img
+            class="section-image"
+            src="assets/corr_v3.png"
             alt="Policy evaluation correlation between predicted and ground-truth success rates"
           >
           <figcaption>
-            Predicted success rates from UVA-Eval correlate with ground-truth
-            real-world policy success rates across tasks and baselines.
+            Each point is a policy-checkpoint and success-criterion pair.
+            SC3-Eval maintains strong agreement with real-world policy
+            performance across in-distribution and out-of-distribution tasks,
+            and across offline and online evaluation.
           </figcaption>
         </figure>
         <hr></hr>
@@ -221,16 +222,16 @@
       <section class="container section" id="ablation-study" aria-labelledby="ablation-study-title">
         <h2 id="ablation-study-title">Ablation Study</h2>
         <p>
-          Show how cross-view reference mode, and
-          inverse dynamics contribute to evaluator fidelity via the following ablation study.
+          Cross-view consistency and inverse dynamics both contribute to
+          evaluator fidelity.
         </p>
         <div class="subsection-grid">
           <article class="subsection-card">
-            <h3>Cross-view Reference Mode</h3>
+            <h3>Cross-View Consistency</h3>
             <p>
               We compare online world model rollouts with and without
               cross-view reference mode. When the robot moves outside of the
-              workspace and returns, cross-view reference mode helps the model
+              workspace and returns, cross-view consistency helps the model
               better recover the scene within the workspace for the wrist
               camera.
             </p>
@@ -254,7 +255,9 @@
           <article class="subsection-card">
             <h3>Inverse Dynamics</h3>
             <p>
-              We compare the offline world model rollouts with and without inverse dynamics (ID) joint training.  We find that the ID joint training prevent the rollouts from drifting away from the ground-truth rollout.
+              We compare offline world model rollouts with and without inverse
+              dynamics (ID) joint training. ID joint training prevents rollouts
+              from drifting away from the ground-truth rollout.
             </p>
             <div class="ablation-video-card">
               <figure>
@@ -275,8 +278,8 @@
       <section class="container section" id="uncertainty-estimation" aria-labelledby="uncertainty-estimation-title">
         <h2 id="uncertainty-estimation-title">Uncertainty Estimation</h2>
         <p>
-          Visualize inverse-dynamics uncertainty as a signal for terminating
-          unreliable imagined rollouts.
+          Inverse-dynamics uncertainty acts as a test-time consistency signal
+          for terminating unreliable imagined rollouts.
         </p>
         <div class="ablation-video-card">
           <p class="prompt-label">
@@ -317,9 +320,13 @@
       <section class="container section" aria-labelledby="resources-title">
         <h2 id="resources-title">Resources</h2>
         <div class="resource-list">
-          <a href="assets/appendix.pdf">
-            <strong>Appendix</strong>
-            <span>Add appendices, proofs, or extra results to assets/appendix.pdf.</span>
+          <a href="assets/Cosmos%20PI%20Policy%20Evaluation%20%282%29.pdf">
+            <strong>Paper</strong>
+            <span>Read the full SC3-Eval submission.</span>
+          </a>
+          <a href="assets/table_bussing_explainer.pdf">
+            <strong>Table Bussing Explainer</strong>
+            <span>View the task decomposition used for fine-grained evaluation.</span>
           </a>
         </div>
       </section>
